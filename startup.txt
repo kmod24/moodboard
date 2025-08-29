@@ -1,0 +1,41 @@
+**extras**
+source .venv/bin/activate
+python -m uvicorn simple_main:app --reload
+Visit in browser: 
+Docs: http://127.0.0.1:8000/docs
+
+
+
+TO RUN: (Last updated 8/28/25)
+
+Prerequisites:
+- Python 3.10+
+- Node.js 20.19+ or 22.12+ (if needed: nvm install 22.12.0 && nvm use 22.12.0)
+
+---------------- FIRST TIME SETUP ------------------
+# 1) Go to project
+cd /Users/kmod/Desktop/Mood
+
+# 2) Backend: create venv + install deps
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+# if you have requirements.txt, use: pip install -r requirements.txt
+pip install fastapi "uvicorn[standard]" sqlmodel pydantic-settings httpx
+
+# 3) (Optional) AI key – only if you want AI images/text
+# If omitted, the app still works with fallback data.
+printf 'OPENAI_API_KEY=%s\n' 'sk-PASTE-YOUR-REAL-KEY' > .env
+
+# 4) Frontend: install deps
+cd mood-frontend
+npm install
+
+---------------- RUN IN DEV (using two terminals) ------------------
+cd /Users/kmod/Desktop/Mood
+source .venv/bin/activate
+python -m uvicorn simple_main:app --reload --host 127.0.0.1 --port 8000
+
+cd /Users/kmod/Desktop/Mood/mood-frontend
+# (ensure Node is 20.19+ or 22.12+)
+npm run dev

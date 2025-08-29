@@ -1,0 +1,10 @@
+.env
+.env.*
+.venv/
+__pycache__/
+*.pyc
+mood.db
+mood-frontend/node_modules/
+mood-frontend/dist/
+.DS_Store
+.vscode/
